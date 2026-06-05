@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prostheses and Orthoses | Med-Awa International</title>
+  <meta name="description" content="Mobility is the key to living life on your own terms. Discover our prostheses, orthoses and wheelchairs from Med-Awa International." />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #3aaa35;
+      --green-dark: #2a8025;
+      --green-light:#e8f7e8;
+      --sky:        #29b8e0;
+      --sky-dark:   #1a90b0;
+      --sky-light:  #e0f6fc;
+      --black:      #1c1c1c;
+      --gray-text:  #555;
+      --gray-mid:   #ddd;
+      --gray-light: #f4f4f4;
+      --white:      #ffffff;
+      --font-sans:  'Source Sans 3', sans-serif;
+      --font-serif: 'Source Serif 4', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--black); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .logo-wrap img { width: auto; height: 58px; object-fit: contain; }
+    .footer-logo img { width: auto; height: 56px; object-fit: contain; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white); border-bottom: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px;
+      box-shadow: 0 2px 12px rgba(58,170,53,0.10);
+    }
+    .logo-wrap { display: flex; align-items: center; }
+    .logo-wrap img { height: 58px; width: auto; object-fit: contain; }
+    nav.main-nav { display: flex; align-items: center; gap: 28px; }
+    nav.main-nav a { font-size: 14.5px; font-weight: 600; color: var(--black); padding: 8px 0; border-bottom: 2.5px solid transparent; transition: border-color .2s, color .2s; }
+    nav.main-nav a:hover { border-color: var(--green); color: var(--green); }
+    .header-actions { display: flex; align-items: center; gap: 18px; }
+    .header-actions a.company-link { font-size: 14px; color: var(--gray-text); font-weight: 600; transition: color .2s; }
+    .header-actions a.company-link:hover { color: var(--green); }
+    .btn-contact { background: var(--green); color: white; padding: 9px 20px; font-size: 14px; font-weight: 700; border-radius: 3px; transition: background .2s; }
+    .btn-contact:hover { background: var(--green-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); }
+
+    /* ── HERO SLIDER ── */
+    .hero { margin-top: 72px; position: relative; height: calc(100vh - 72px); min-height: 480px; overflow: hidden; }
+    .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; display: flex; align-items: flex-end; }
+    .slide.active { opacity: 1; }
+    .slide-bg-img { position: absolute; inset: 0; }
+    .slide-bg-img img { width: 100%; height: 100%; object-fit: cover; }
+    .slide-overlay { position: absolute; inset: 0; background: linear-gradient(90deg,rgba(5,20,5,0.82) 0%,rgba(5,20,5,0.4) 55%,rgba(5,20,5,0.1) 100%); }
+    .slide::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--green),var(--sky)); z-index:3; }
+    .slide-content { position: relative; z-index: 4; padding: 0 80px 80px; max-width: 620px; }
+    .slide-label { display:inline-block; background:var(--green); color:white; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:2px; margin-bottom:18px; }
+    .slide-label.sky { background: var(--sky); }
+    .slide-title { font-family:var(--font-serif); font-size:clamp(34px,4.5vw,60px); font-weight:300; color:white; line-height:1.12; margin-bottom:22px; }
+    .slide-title strong { font-weight:700; color:#7ee87a; }
+    .slide-title strong.sky-em { color:#72dff5; }
+    .slide-cta { display:inline-flex; align-items:center; gap:10px; background:var(--green); color:white; padding:14px 28px; font-size:15px; font-weight:700; border-radius:3px; transition:background .2s; cursor:pointer; }
+    .slide-cta.sky-cta { background:var(--sky); }
+    .slide-cta:hover { background:var(--green-dark); }
+    .slide-cta.sky-cta:hover { background:var(--sky-dark); }
+    .slider-prev, .slider-next { position:absolute; bottom:40px; right:80px; z-index:10; width:46px; height:46px; border:2px solid rgba(255,255,255,.45); background:transparent; color:white; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s, border-color .2s; }
+    .slider-prev { right:134px; }
+    .slider-prev:hover, .slider-next:hover { background:var(--green); border-color:var(--green); }
+    .slider-dots { position:absolute; bottom:56px; left:80px; z-index:10; display:flex; gap:8px; }
+    .dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.35); cursor:pointer; transition:background .2s; }
+    .dot.active { background:var(--green); }
+
+    /* ── SECTION COMMONS ── */
+    .section-subtitle { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--green); margin-bottom:12px; }
+    .section-title { font-family:var(--font-serif); font-size:36px; font-weight:300; line-height:1.2; color:var(--black); margin-bottom:16px; }
+    .section-lead { font-size:17px; color:var(--gray-text); line-height:1.75; max-width:700px; }
+
+    /* ── PRODUCTS SECTION ── */
+    .products-section { background:var(--gray-light); padding:80px; }
+    .products-header { margin-bottom:48px; }
+    .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+    .product-card { position:relative; overflow:hidden; cursor:pointer; aspect-ratio:3/4; }
+    .product-card-img { position:absolute; inset:0; transition:transform .5s ease; }
+    .product-card-img img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .product-card:hover .product-card-img { transform:scale(1.05); }
+    .product-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.15) 55%,transparent 100%); }
+    .pc-accent { position:absolute; top:0; left:0; right:0; height:4px; }
+    .pc-accent-green { background:var(--green); }
+    .pc-accent-sky { background:var(--sky); }
+    .pc-accent-both { background:linear-gradient(90deg,var(--green),var(--sky)); }
+    .product-card-content { position:absolute; bottom:0; left:0; right:0; padding:28px 28px 32px; }
+    .product-card-content h3 { font-family:var(--font-serif); font-size:26px; font-weight:300; color:white; margin-bottom:8px; }
+    .product-card-content p { font-size:14px; color:rgba(255,255,255,.75); line-height:1.65; margin-bottom:20px; }
+    .product-link { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:white; padding-bottom:3px; border-bottom:2px solid; transition:opacity .2s; }
+    .green-link { border-color:var(--green); }
+    .sky-link { border-color:var(--sky); }
+    .product-link:hover { opacity:.75; }
+
+    /* ── MISSION ── */
+    .mission-section { display:grid; grid-template-columns:1fr 1fr; background:var(--black); }
+    .mission-content { padding:80px; display:flex; flex-direction:column; justify-content:center; }
+    .mission-content .section-subtitle { color:var(--green); }
+    .mission-content .section-title { color:white; font-size:40px; max-width:480px; }
+    .mission-content p { font-size:16px; color:rgba(255,255,255,.68); line-height:1.85; margin-top:20px; max-width:480px; }
+    .mission-cta { display:inline-flex; align-items:center; gap:10px; margin-top:32px; border:2px solid var(--green); color:var(--green); padding:12px 26px; font-size:14px; font-weight:700; border-radius:3px; transition:background .2s, color .2s; }
+    .mission-cta:hover { background:var(--green); color:white; }
+    .mission-visual { position:relative; min-height:480px; overflow:hidden; }
+    .mission-visual img { width:100%; height:100%; object-fit:cover; }
+    .mission-visual-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.25); }
+
+    /* ── PARA SECTION ── */
+    .para-section { background:var(--sky-light); padding:80px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .para-visual { aspect-ratio:16/9; border-radius:4px; overflow:hidden; position:relative; }
+    .para-visual img { width:100%; height:100%; object-fit:cover; }
+    .para-visual-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 60%); }
+    .para-rings-row { display:flex; gap:6px; position:absolute; bottom:20px; left:24px; }
+    .ring { width:28px; height:28px; border-radius:50%; border:3px solid; }
+
+    /* ── SERVICES TABS ── */
+    .services-section { background:white; padding:80px; }
+    .services-tabs { display:flex; border-bottom:2px solid var(--gray-mid); margin-bottom:48px; }
+    .tab-btn { padding:13px 0; margin-right:36px; font-size:15px; font-weight:700; color:var(--gray-text); background:none; border:none; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .2s, border-color .2s; }
+    .tab-btn.active { color:var(--green); border-bottom-color:var(--green); }
+    .tab-content { display:none; }
+    .tab-content.active { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .tab-visual { aspect-ratio:16/9; border-radius:4px; overflow:hidden; position:relative; }
+    .tab-visual img { width:100%; height:100%; object-fit:cover; }
+    .tab-text .tab-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--sky); margin-bottom:10px; }
+    .tab-text h3 { font-family:var(--font-serif); font-size:30px; font-weight:300; margin-bottom:16px; }
+    .tab-text p { font-size:16px; color:var(--gray-text); line-height:1.8; margin-bottom:24px; }
+    .tab-link { display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:var(--green); border-bottom:2px solid var(--green); padding-bottom:2px; }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip { background:linear-gradient(135deg,var(--green-dark),var(--green)); color:white; padding:60px 80px; }
+    .contact-strip h2 { font-family:var(--font-serif); font-size:36px; font-weight:300; margin-bottom:40px; }
+    .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+    .contact-item h4 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px; opacity:.8; }
+    .contact-item p { font-size:15px; line-height:1.65; opacity:.9; margin-bottom:18px; }
+    .contact-btn { display:inline-flex; align-items:center; gap:8px; border:2px solid rgba(255,255,255,.6); color:white; padding:10px 20px; font-size:13px; font-weight:700; border-radius:3px; transition:background .2s, border-color .2s; }
+    .contact-btn:hover { background:rgba(255,255,255,.18); border-color:white; }
+    .phone-num { font-size:22px; font-weight:700; margin-bottom:4px; }
+
+    /* ── FOOTER ── */
+    footer { background:#111; color:rgba(255,255,255,.55); padding:60px 80px 32px; }
+    .footer-top { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:40px; gap:40px; flex-wrap:wrap; }
+    .footer-logo img { height:56px; width:auto; object-fit:contain; }
+    .footer-tagline { font-size:14px; color:rgba(255,255,255,.4); max-width:300px; line-height:1.7; margin-top:14px; }
+    .footer-social { display:flex; gap:10px; margin-top:20px; }
+    .social-icon { width:38px; height:38px; border:1px solid rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.45); border-radius:3px; transition:all .2s; }
+    .social-icon:hover { background:var(--green); border-color:var(--green); color:white; }
+    .footer-cols { display:flex; gap:60px; flex-wrap:wrap; }
+    .footer-col h5 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,.9); margin-bottom:20px; }
+    .footer-col h5::after { content:''; display:block; width:24px; height:2px; background:var(--green); margin-top:8px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:12px; }
+    .footer-col a { font-size:14px; color:rgba(255,255,255,.45); transition:color .2s; }
+    .footer-col a:hover { color:var(--green); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; border-top:1px solid rgba(255,255,255,.08); padding-top:28px; }
+    .footer-bottom p { font-size:13px; }
+    .footer-legal { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-legal a { font-size:13px; color:rgba(255,255,255,.35); transition:color .2s; }
+    .footer-legal a:hover { color:white; }
+
+    /* ── SCROLL ANIM ── */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      header { padding:0 40px; }
+      .products-section, .para-section, .services-section, .contact-strip { padding:60px 40px; }
+      .mission-section { grid-template-columns:1fr; }
+      .mission-content { padding:60px 40px; }
+      nav.main-nav { gap:18px; }
+      footer { padding:60px 40px 32px; }
+    }
+    @media(max-width:768px){
+      header { padding:0 20px; }
+      nav.main-nav { display:none; }
+      .hamburger { display:flex; }
+      .hero { height:80vh; }
+      .slide-content { padding:0 24px 60px; }
+      .slider-prev, .slider-next { bottom:20px; right:20px; width:40px; height:40px; }
+      .slider-prev { right:68px; }
+      .slider-dots { bottom:34px; left:24px; }
+      .products-section, .para-section, .services-section, .contact-strip { padding:48px 20px; }
+      .products-grid { grid-template-columns:1fr; }
+      .product-card { aspect-ratio:4/3; }
+      .para-section { grid-template-columns:1fr; gap:36px; }
+      .tab-content.active { grid-template-columns:1fr; }
+      .contact-grid { grid-template-columns:1fr; gap:28px; }
+      .mission-content { padding:48px 20px; }
+      .mission-visual { min-height:280px; }
+      footer { padding:48px 20px 24px; }
+      .footer-bottom { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="logo-wrap">
+    <img src="images/logo.png" alt="Med-Awa International" style="height:58px;width:auto;object-fit:contain;" />
+  </a>
+  <nav class="main-nav">
+    <a href="index.html">Your Situation</a>
+    <a href="prosthetics.html">Prosthetics</a>
+    <a href="orthotics.html">Orthotics</a>
+    <a href="index.html">Wheelchairs</a>
+    <a href="index.html">Care Centers</a>
+    <a href="index.html">Exchange &amp; Support</a>
+  </nav>
+  <div class="header-actions">
+    <a href="#" class="company-link">Company</a>
+    <a href="#contact" class="btn-contact">Contact Us</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ── HERO SLIDER ── -->
+<div class="hero">
+
+  <!-- Slide 1: Prosthetic Legs -->
+  <div class="slide active">
+    <div class="slide-bg-img"><img src="images/4848463.jpg" alt="Prosthetic leg user walking outdoors" /></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-label">Med-Awa Flagship Solution</div>
+      <h1 class="slide-title">Live life in <strong>effortless motion.</strong></h1>
+      <a href="prosthetics.html" class="slide-cta">
+        Explore prosthetics
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Slide 2: Aqua / C-Leg -->
+  <div class="slide">
+    <div class="slide-bg-img"><img src="images/4933650.jpg" alt="C-Leg microprocessor knee" /></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-label sky">Microprocessor Knees</div>
+      <h1 class="slide-title">The world's most trusted <strong class="sky-em">prosthetic knee.</strong></h1>
+      <a href="prosthetic-legs.html" class="slide-cta sky-cta">
+        More information
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Slide 3: Orthotics / Active Living -->
+  <div class="slide">
+    <div class="slide-bg-img"><img src="images/5069629.jpg" alt="Active living with orthotics" /></div>
+    <div class="slide-overlay"></div>
+    <div class="slide-content">
+      <div class="slide-label">Orthotics &amp; Active Living</div>
+      <h1 class="slide-title"><strong>Move freely.</strong> Live fully.</h1>
+      <a href="orthotics.html" class="slide-cta">
+        Explore orthotics
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="slider-dots">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+  </div>
+  <button class="slider-prev" aria-label="Previous">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2"><line x1="15" y1="9" x2="3" y2="9"/><polyline points="8,4 3,9 8,14"/></svg>
+  </button>
+  <button class="slider-next" aria-label="Next">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="2"><line x1="3" y1="9" x2="15" y2="9"/><polyline points="10,4 15,9 10,14"/></svg>
+  </button>
+</div>
+
+<!-- ── PRODUCTS SECTION ── -->
+<section class="products-section fade-up">
+  <div class="products-header">
+    <div class="section-subtitle">Med-Awa Products &amp; Services</div>
+    <h2 class="section-title">Solutions for every need</h2>
+  </div>
+  <div class="products-grid">
+
+    <!-- Prostheses -->
+    <div class="product-card">
+      <div class="product-card-img"><img src="images/leg.jpg" alt="Prosthetic leg" /></div>
+      <div class="pc-accent pc-accent-green"></div>
+      <div class="product-card-overlay"></div>
+      <div class="product-card-content">
+        <h3>Prostheses</h3>
+        <p>Mobility is the key to living life on your own terms. Advanced prosthetic solutions designed for every stage of life.</p>
+        <a href="prosthetics.html" class="product-link green-link">Information →</a>
+      </div>
+    </div>
+
+    <!-- Orthoses -->
+    <div class="product-card">
+      <div class="product-card-img"><img src="images/knee.jpg" alt="Knee orthosis" /></div>
+      <div class="pc-accent pc-accent-sky"></div>
+      <div class="product-card-overlay"></div>
+      <div class="product-card-content">
+        <h3>Orthoses</h3>
+        <p>Our goal is to help people move freely with less pain, correct malpositions and provide effective support for healing.</p>
+        <a href="orthotics.html" class="product-link sky-link">Information →</a>
+      </div>
+    </div>
+
+    <!-- Wheelchairs -->
+    <div class="product-card">
+      <div class="product-card-img"><img src="images/4897800.jpg" alt="Wheelchair mobility" /></div>
+      <div class="pc-accent pc-accent-both"></div>
+      <div class="product-card-overlay"></div>
+      <div class="product-card-content">
+        <h3>Wheelchairs</h3>
+        <p>Manual, power, and pediatric options supporting independence and mobility for people with disabilities worldwide.</p>
+        <a href="#" class="product-link green-link">Information →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MISSION SECTION ── -->
+<div class="mission-section fade-up">
+  <div class="mission-content">
+    <div class="section-subtitle">Our mission</div>
+    <h2 class="section-title">We help people maintain or regain their freedom of movement.</h2>
+    <p>People have always come first in everything we do. We work hard every day to improve the quality of life of our patients and users, enabling them to live independent, fulfilling lives with confidence.</p>
+    <a href="#" class="mission-cta">
+      Learn more
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+    </a>
+  </div>
+  <div class="mission-visual">
+    <img src="images/quality.jpg" alt="Orthotist fitting a patient" />
+    <div class="mission-visual-overlay"></div>
+  </div>
+</div>
+
+<!-- ── PARALYMPICS SECTION ── -->
+<section class="para-section fade-up">
+  <div class="para-visual">
+    <img src="images/4629077--169-col_4630853.jpg" alt="Paralympic athlete with prosthetic leg" />
+    <div class="para-visual-overlay"></div>
+    <div class="para-rings-row">
+      <div class="ring" style="border-color:#0085c7;"></div>
+      <div class="ring" style="border-color:#f4c300;"></div>
+      <div class="ring" style="border-color:#009f3d;"></div>
+      <div class="ring" style="border-color:#df0024;"></div>
+      <div class="ring" style="border-color:white;"></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-subtitle" style="color:var(--sky);">Paralympic Games</div>
+    <h2 class="section-title">Passion for Paralympics</h2>
+    <p class="section-lead">Our partnership with the Paralympics started in 1988. Med-Awa International has proudly supported every Summer and Winter Paralympic Games since, paving the way for excellent sportsmanship and fair competition between athletes of all abilities.</p>
+    <a href="#" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:14px;font-weight:700;color:var(--sky);border-bottom:2px solid var(--sky);padding-bottom:2px;">
+      Learn more →
+    </a>
+  </div>
+</section>
+
+<!-- ── SERVICES SECTION ── -->
+<section class="services-section fade-up">
+  <div style="margin-bottom:48px;">
+    <div class="section-subtitle">For Professionals</div>
+    <h2 class="section-title">Services &amp; Education</h2>
+  </div>
+  <div class="services-tabs">
+    <button class="tab-btn active" data-tab="academy">Med-Awa Academy</button>
+    <button class="tab-btn" data-tab="service">After-Sales Service</button>
+    <button class="tab-btn" data-tab="network">Clinical Network</button>
+  </div>
+
+  <div class="tab-content active" id="tab-academy">
+    <div class="tab-visual">
+      <img src="images/3332654-_MMP0093--169-col_3345964__en.jpg" alt="Med-Awa Academy training session" />
+    </div>
+    <div class="tab-text">
+      <div class="tab-label">Continuing Education</div>
+      <h3>Med-Awa Academy</h3>
+      <p>Knowledge and continuing education are key factors in the medical technology sector. Stay up to date on products, application techniques and therapy approaches through clinical training offered by the Med-Awa Academy.</p>
+      <a href="#" class="tab-link">Learn more →</a>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-service">
+    <div class="tab-visual">
+      <img src="images/talea_mach_foot.jpg" alt="After-sales service and maintenance" />
+    </div>
+    <div class="tab-text">
+      <div class="tab-label">Services</div>
+      <h3>After-Sales Service</h3>
+      <p>Professional, solution-oriented global support for technical queries, warranty and statutory rights, maintenance and repairs — so our users always stay mobile.</p>
+      <a href="#" class="tab-link">Learn more →</a>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-network">
+    <div class="tab-visual">
+      <img src="images/movao_image_16_9_logo.jpg" alt="Clinical services network" />
+    </div>
+    <div class="tab-text">
+      <div class="tab-label">Services</div>
+      <h3>Clinical Services Network</h3>
+      <p>The Med-Awa Clinical Services Network offers customised orthopaedic treatment and rehabilitation solutions worldwide. Across 340+ care clinics, we help users regain, maintain and improve their freedom of movement.</p>
+      <a href="#" class="tab-link">Learn more →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT STRIP ── -->
+<div class="contact-strip fade-up" id="contact">
+  <h2>Ways to reach us!</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <h4>Visit Us</h4>
+      <p>39 Honey Drive, Belvedere<br>Harare, Zimbabwe</p>
+      <a href="https://maps.google.com/?q=39+Honey+Drive+Belvedere+Harare" target="_blank" class="contact-btn">Get Directions →</a>
+    </div>
+    <div class="contact-item">
+      <h4>Email Us</h4>
+      <p>Send us a message and we will<br>respond within one business day.</p>
+      <a href="mailto:medawainternational@gmail.com" class="contact-btn">medawainternational@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <h4>Call Us</h4>
+      <div class="phone-num">+263 86 4428 7874</div>
+      <p>Mobile: +263 77 613 3202<br>Mobile: +263 77 421 9190</p>
+      <a href="tel:+263864287874" class="contact-btn">Call Now →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="images/logo.png" alt="Med-Awa International" style="height:56px;width:auto;object-fit:contain;" /></div>
+      <p class="footer-tagline">39 Honey Drive, Belvedere, Harare, Zimbabwe<br>📞 +263 86 4428 7874 &nbsp;|&nbsp; 📱 +263 77 613 3202<br>✉️ medawainternational@gmail.com</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Twitter/X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>For Patients</h5>
+        <ul>
+          <li><a href="#">Life with Amputation</a></li>
+          <li><a href="prosthetics.html">Prosthetics</a></li>
+          <li><a href="prosthetic-legs.html">Prosthetic Legs</a></li>
+          <li><a href="orthotics.html">Orthotics</a></li>
+          <li><a href="#">Wheelchairs</a></li>
+          <li><a href="#">Care Centers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Med-Awa</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Med-Awa Academy</a></li>
+          <li><a href="#">Press Room</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Med-Awa International. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Imprint</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Slider
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+  let cur = 0, timer;
+  function goTo(i){ slides[cur].classList.remove('active'); dots[cur].classList.remove('active'); cur=(i+slides.length)%slides.length; slides[cur].classList.add('active'); dots[cur].classList.add('active'); }
+  function startAuto(){ timer=setInterval(()=>goTo(cur+1),5500); }
+  document.querySelector('.slider-next').addEventListener('click',()=>{clearInterval(timer);goTo(cur+1);startAuto();});
+  document.querySelector('.slider-prev').addEventListener('click',()=>{clearInterval(timer);goTo(cur-1);startAuto();});
+  dots.forEach(d=>d.addEventListener('click',()=>{clearInterval(timer);goTo(+d.dataset.i);startAuto();}));
+  startAuto();
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Scroll animations
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
