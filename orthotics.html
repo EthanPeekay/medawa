@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orthotics | Med-Awa International</title>
+  <meta name="description" content="Whether you are treating pain, recovering from surgery, or need everyday support, Med-Awa International offers custom and off-the-shelf orthotic solutions for every part of the body." />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #3aaa35;
+      --green-dark: #2a8025;
+      --green-light:#e8f7e8;
+      --sky:        #29b8e0;
+      --sky-dark:   #1a90b0;
+      --sky-light:  #e0f6fc;
+      --black:      #1c1c1c;
+      --gray-text:  #555;
+      --gray-mid:   #ddd;
+      --gray-light: #f4f4f4;
+      --white:      #ffffff;
+      --font-sans:  'Source Sans 3', sans-serif;
+      --font-serif: 'Source Serif 4', serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--black); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white); border-bottom: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px;
+      box-shadow: 0 2px 12px rgba(58,170,53,0.10);
+    }
+    .logo-wrap img { height: 58px; width: auto; object-fit: contain; display: block; }
+    nav.main-nav { display: flex; align-items: center; gap: 28px; }
+    nav.main-nav a { font-size: 14px; font-weight: 600; color: var(--black); padding: 8px 0; border-bottom: 2.5px solid transparent; transition: border-color .2s, color .2s; }
+    nav.main-nav a:hover, nav.main-nav a.active { border-color: var(--green); color: var(--green); }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-cta { background: var(--green); color: white; padding: 9px 20px; font-size: 14px; font-weight: 700; border-radius: 3px; transition: background .2s; }
+    .btn-cta:hover { background: var(--green-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { margin-top: 72px; background: var(--gray-light); padding: 14px 80px; border-bottom: 1px solid var(--gray-mid); }
+    .breadcrumb ol { list-style: none; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .breadcrumb li { font-size: 13px; color: var(--gray-text); }
+    .breadcrumb li a { color: var(--green); font-weight: 600; }
+    .breadcrumb li a:hover { text-decoration: underline; }
+    .breadcrumb li::after { content: '›'; margin-left: 8px; color: var(--gray-mid); }
+    .breadcrumb li:last-child::after { display: none; }
+    .breadcrumb li:last-child { color: var(--black); font-weight: 600; }
+
+    /* ── HERO ── */
+    .hero { position: relative; height: 76vh; min-height: 500px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-img { position: absolute; inset: 0; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,20,5,0.88) 0%, rgba(5,20,5,0.5) 55%, rgba(5,20,5,0.1) 100%); }
+    .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--green),var(--sky)); z-index:3; }
+    .hero-content { position: relative; z-index: 2; padding: 0 80px 84px; max-width: 680px; }
+    .hero-eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+    .hero-label { display:inline-block; background:var(--sky); color:white; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:2px; }
+    .hero-content h1 { font-family:var(--font-serif); font-size: clamp(38px,5.5vw,68px); font-weight:300; color:white; line-height:1.08; margin-bottom:18px; }
+    .hero-content h1 strong { font-weight:700; color:#72dff5; }
+    .hero-content p { font-size:17px; color:rgba(255,255,255,.84); line-height:1.75; max-width:560px; margin-bottom:32px; }
+    .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+    .btn-sky { display:inline-flex; align-items:center; gap:10px; background:var(--sky); color:white; padding:14px 28px; font-size:15px; font-weight:700; border-radius:3px; transition:background .2s; }
+    .btn-sky:hover { background:var(--sky-dark); }
+    .btn-outline { display:inline-flex; align-items:center; gap:10px; border:2px solid rgba(255,255,255,.6); color:white; padding:13px 26px; font-size:15px; font-weight:700; border-radius:3px; transition:all .2s; }
+    .btn-outline:hover { background:rgba(255,255,255,.12); border-color:white; }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip { background:var(--sky); color:white; padding:28px 80px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+    .intro-strip p { font-size:17px; line-height:1.7; max-width:700px; opacity:.96; }
+    .intro-strip a { display:inline-flex; align-items:center; gap:8px; border:2px solid rgba(255,255,255,.7); color:white; padding:11px 22px; font-size:14px; font-weight:700; border-radius:3px; white-space:nowrap; transition:all .2s; }
+    .intro-strip a:hover { background:rgba(255,255,255,.18); border-color:white; }
+
+    /* ── STICKY CATEGORY NAV ── */
+    .cat-nav { background:var(--white); padding:0 80px; border-bottom:2px solid var(--gray-mid); position:sticky; top:72px; z-index:100; }
+    .cat-nav-inner { display:flex; overflow-x:auto; }
+    .cat-nav-inner::-webkit-scrollbar { height:3px; }
+    .cat-nav-inner::-webkit-scrollbar-thumb { background:var(--sky); }
+    .cat-nav-item { padding:18px 26px; font-size:14px; font-weight:700; color:var(--gray-text); white-space:nowrap; cursor:pointer; border-bottom:3px solid transparent; transition:color .2s, border-color .2s; }
+    .cat-nav-item:hover { color:var(--sky); }
+    .cat-nav-item.active { color:var(--sky); border-bottom-color:var(--sky); }
+
+    /* ── SECTION COMMONS ── */
+    .pad { padding: 80px; }
+    .section-subtitle { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+    .sub-sky { color:var(--sky); }
+    .sub-green { color:var(--green); }
+    .section-title { font-family:var(--font-serif); font-size:38px; font-weight:300; line-height:1.18; margin-bottom:18px; }
+    .section-lead { font-size:17px; color:var(--gray-text); line-height:1.8; max-width:780px; }
+
+    /* ── WHAT IS ORTHOTICS (INTRO SPLIT) ── */
+    .what-section { background:var(--white); padding:80px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .what-text p { font-size:16px; color:var(--gray-text); line-height:1.85; margin-bottom:16px; }
+    .what-visual { position:relative; border-radius:4px; overflow:hidden; }
+    .what-visual img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+    .what-badge { position:absolute; bottom:24px; left:24px; background:var(--sky); color:white; padding:11px 20px; border-radius:3px; font-size:13px; font-weight:700; }
+
+    /* ── CATEGORY GRID (6 boxes) ── */
+    .category-section { background:var(--gray-light); padding:80px; }
+    .cat-header { margin-bottom:48px; }
+    .cat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+    .cat-card { background:var(--white); overflow:hidden; cursor:pointer; transition:box-shadow .25s; }
+    .cat-card:hover { box-shadow:0 8px 32px rgba(41,184,224,0.13); }
+    .cat-card-img { aspect-ratio:16/9; overflow:hidden; position:relative; }
+    .cat-card-img img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .cat-card:hover .cat-card-img img { transform:scale(1.05); }
+    .cat-card-img::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; }
+    .cc-sky .cat-card-img::after { background:var(--sky); }
+    .cc-green .cat-card-img::after { background:var(--green); }
+    .cc-both .cat-card-img::after { background:linear-gradient(90deg,var(--green),var(--sky)); }
+    .cat-card-body { padding:26px 28px 30px; }
+    .cat-card-body .tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+    .tag-sky { color:var(--sky); }
+    .tag-green { color:var(--green); }
+    .cat-card-body h3 { font-family:var(--font-serif); font-size:22px; font-weight:300; margin-bottom:10px; }
+    .cat-card-body p { font-size:14px; color:var(--gray-text); line-height:1.72; margin-bottom:18px; }
+    .cat-link { font-size:13px; font-weight:700; display:inline-flex; align-items:center; gap:6px; padding-bottom:2px; border-bottom:1px solid; }
+    .cl-sky { color:var(--sky); border-color:var(--sky); }
+    .cl-green { color:var(--green); border-color:var(--green); }
+
+    /* ── FEATURED PRODUCTS (wide cards) ── */
+    .featured-section { background:var(--white); padding:80px; }
+    .featured-header { margin-bottom:52px; }
+    .wide-card { display:grid; grid-template-columns:380px 1fr; gap:0; border:1px solid var(--gray-mid); margin-bottom:3px; background:var(--white); overflow:hidden; transition:box-shadow .25s, border-color .25s; }
+    .wide-card:hover { box-shadow:0 8px 32px rgba(41,184,224,0.11); border-color:var(--sky); }
+    .wide-card.green-hover:hover { border-color:var(--green); box-shadow:0 8px 32px rgba(58,170,53,0.11); }
+    .wc-img { overflow:hidden; position:relative; min-height:280px; }
+    .wc-img img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .wide-card:hover .wc-img img { transform:scale(1.04); }
+    .wc-badge { position:absolute; top:16px; left:16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; padding:5px 12px; border-radius:2px; color:white; }
+    .bg-sky { background:var(--sky); }
+    .bg-green { background:var(--green); }
+    .wc-body { padding:40px 48px; display:flex; flex-direction:column; justify-content:center; }
+    .wc-body .tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+    .wc-body h3 { font-family:var(--font-serif); font-size:30px; font-weight:300; margin-bottom:14px; }
+    .wc-body p { font-size:16px; color:var(--gray-text); line-height:1.82; margin-bottom:24px; }
+    .wc-specs { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
+    .spec { background:var(--gray-light); border-radius:20px; padding:6px 14px; font-size:12px; font-weight:600; }
+    .spec-sky { border-left:3px solid var(--sky); }
+    .spec-green { border-left:3px solid var(--green); }
+    .wc-btn { display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-size:13px; font-weight:700; border-radius:3px; padding:11px 22px; border:2px solid; transition:background .2s, color .2s; }
+    .wb-sky { border-color:var(--sky); color:var(--sky); }
+    .wb-sky:hover { background:var(--sky); color:white; }
+    .wb-green { border-color:var(--green); color:var(--green); }
+    .wb-green:hover { background:var(--green); color:white; }
+
+    /* ── CONDITION FINDER ── */
+    .condition-section { background:linear-gradient(135deg,#071c2a 0%,#0e3a55 60%,#0d2b0d 100%); color:white; padding:80px; }
+    .condition-section .section-subtitle { color:var(--sky); }
+    .condition-section .section-title { color:white; }
+    .condition-section .section-lead { color:rgba(255,255,255,.68); }
+    .conditions-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; margin-top:48px; }
+    .cond-card { background:rgba(255,255,255,.05); padding:32px 28px; border-top:3px solid; cursor:pointer; transition:background .25s; }
+    .cond-card:hover { background:rgba(255,255,255,.1); }
+    .cond-card:nth-child(odd) { border-top-color:var(--sky); }
+    .cond-card:nth-child(even) { border-top-color:var(--green); }
+    .cond-icon { font-size:36px; margin-bottom:16px; }
+    .cond-card h4 { font-size:16px; font-weight:700; color:white; margin-bottom:10px; }
+    .cond-card p { font-size:13px; color:rgba(255,255,255,.6); line-height:1.7; margin-bottom:16px; }
+    .cond-link { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; display:inline-flex; align-items:center; gap:5px; }
+    .cond-card:nth-child(odd) .cond-link { color:var(--sky); }
+    .cond-card:nth-child(even) .cond-link { color:#7ee87a; }
+
+    /* ── CUSTOM VS OFFTHESHELF ── */
+    .compare-section { background:var(--gray-light); padding:80px; }
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:48px; }
+    .compare-card { background:var(--white); padding:48px; }
+    .compare-card.sky-border { border-top:4px solid var(--sky); }
+    .compare-card.green-border { border-top:4px solid var(--green); }
+    .compare-icon { font-size:48px; margin-bottom:20px; }
+    .compare-card h3 { font-family:var(--font-serif); font-size:28px; font-weight:300; margin-bottom:14px; }
+    .compare-card > p { font-size:15px; color:var(--gray-text); line-height:1.8; margin-bottom:28px; }
+    .compare-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .compare-list li { display:flex; align-items:flex-start; gap:12px; font-size:14px; color:var(--gray-text); line-height:1.6; }
+    .check-sky { color:var(--sky); font-size:16px; flex-shrink:0; margin-top:1px; }
+    .check-green { color:var(--green); font-size:16px; flex-shrink:0; margin-top:1px; }
+
+    /* ── STATS ── */
+    .stats-band { background:linear-gradient(135deg,var(--sky-dark),var(--sky)); color:white; padding:56px 80px; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; text-align:center; }
+    .stat-num { font-family:var(--font-serif); font-size:52px; font-weight:300; line-height:1; }
+    .stat-unit { font-size:22px; font-weight:700; color:rgba(255,255,255,.7); }
+    .stat-label { font-size:14px; opacity:.85; margin-top:8px; line-height:1.5; }
+
+    /* ── PROCESS STEPS ── */
+    .process-section { background:var(--white); padding:80px; }
+    .process-header { max-width:680px; margin-bottom:56px; }
+    .steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+    .step-card { background:var(--gray-light); padding:36px 28px; position:relative; border-bottom:4px solid; }
+    .step-card:nth-child(odd) { border-bottom-color:var(--sky); }
+    .step-card:nth-child(even) { border-bottom-color:var(--green); }
+    .step-num { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; color:white; margin-bottom:18px; }
+    .sn-sky { background:var(--sky); }
+    .sn-green { background:var(--green); }
+    .step-card h4 { font-size:16px; font-weight:700; margin-bottom:10px; }
+    .step-card p { font-size:14px; color:var(--gray-text); line-height:1.7; }
+
+    /* ── PATIENT STORIES ── */
+    .stories-section { background:var(--sky-light); padding:80px; }
+    .stories-header { margin-bottom:48px; }
+    .stories-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .story-card { background:var(--white); padding:36px; position:relative; overflow:hidden; transition:box-shadow .25s; }
+    .story-card:hover { box-shadow:0 6px 24px rgba(41,184,224,0.12); }
+    .story-accent { position:absolute; top:0; left:0; width:4px; bottom:0; }
+    .sa-sky { background:var(--sky); }
+    .sa-green { background:var(--green); }
+    .story-card::before { content:'\201C'; position:absolute; top:16px; right:24px; font-size:80px; color:var(--sky); opacity:.1; font-family:Georgia,serif; line-height:1; }
+    .story-img-row { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+    .story-avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; border:3px solid var(--sky-light); flex-shrink:0; }
+    .story-name { font-weight:700; font-size:15px; }
+    .story-detail { font-size:13px; color:var(--sky); font-weight:600; }
+    .story-card blockquote { font-size:15px; color:var(--gray-text); line-height:1.82; font-style:italic; }
+
+    /* ── FIND CLINIC SPLIT ── */
+    .clinic-section { background:var(--black); padding:80px; display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    .clinic-box { padding:56px; display:flex; flex-direction:column; }
+    .cb-sky { background:linear-gradient(135deg,#071c2a,#0e3a55); }
+    .cb-green { background:linear-gradient(135deg,#0d2b0d,#1a4a1a); }
+    .clinic-box::before { content:''; display:block; width:100%; height:3px; margin-bottom:36px; }
+    .cb-sky::before { background:var(--sky); }
+    .cb-green::before { background:var(--green); }
+    .clinic-box h3 { font-family:var(--font-serif); font-size:30px; font-weight:300; color:white; margin-bottom:14px; }
+    .clinic-box p { font-size:15px; color:rgba(255,255,255,.68); line-height:1.82; margin-bottom:28px; flex:1; }
+    .cb-btn { display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-size:14px; font-weight:700; border-radius:3px; padding:13px 24px; transition:all .2s; }
+    .cbb-sky { background:var(--sky); color:white; }
+    .cbb-sky:hover { background:var(--sky-dark); }
+    .cbb-green { background:var(--green); color:white; }
+    .cbb-green:hover { background:var(--green-dark); }
+
+    /* ── CONSULTATION FORM ── */
+    .form-section { background:var(--gray-light); padding:80px; }
+    .form-wrap { max-width:840px; }
+    .form-section .section-title { margin-bottom:8px; }
+    .form-section .section-lead { margin-bottom:48px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .form-group { display:flex; flex-direction:column; gap:8px; }
+    .form-group.full { grid-column:1/-1; }
+    label { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+    input, select, textarea { width:100%; padding:13px 16px; font-size:15px; font-family:var(--font-sans); border:1px solid var(--gray-mid); border-radius:3px; background:var(--white); color:var(--black); outline:none; transition:border-color .2s, box-shadow .2s; }
+    input:focus, select:focus, textarea:focus { border-color:var(--sky); box-shadow:0 0 0 3px rgba(41,184,224,0.12); }
+    textarea { resize:vertical; min-height:120px; }
+    select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; }
+    .checkbox-row { display:flex; align-items:flex-start; gap:12px; }
+    .checkbox-row input[type=checkbox] { width:18px; height:18px; flex-shrink:0; accent-color:var(--sky); margin-top:2px; }
+    .checkbox-row label { font-size:14px; text-transform:none; letter-spacing:0; font-weight:400; color:var(--gray-text); }
+    .form-note { font-size:12px; color:var(--gray-text); margin-top:6px; }
+    .submit-btn { display:inline-flex; align-items:center; gap:10px; background:var(--sky); color:white; padding:15px 36px; font-size:15px; font-weight:700; border:none; border-radius:3px; cursor:pointer; font-family:var(--font-sans); transition:background .2s; }
+    .submit-btn:hover { background:var(--sky-dark); }
+    .form-success { display:none; background:#e0f6fc; border:1px solid var(--sky); border-radius:3px; padding:20px 24px; margin-top:20px; color:var(--sky-dark); font-weight:600; font-size:15px; }
+
+    /* ── FOOTER ── */
+    footer { background:#111; color:rgba(255,255,255,.55); padding:60px 80px 32px; }
+    .footer-top { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:40px; gap:40px; flex-wrap:wrap; }
+    .footer-logo img { height:56px; width:auto; }
+    .footer-tagline { font-size:14px; color:rgba(255,255,255,.4); max-width:300px; line-height:1.7; margin-top:14px; }
+    .footer-social { display:flex; gap:10px; margin-top:20px; }
+    .social-icon { width:38px; height:38px; border:1px solid rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.45); border-radius:3px; transition:all .2s; }
+    .social-icon:hover { background:var(--green); border-color:var(--green); color:white; }
+    .footer-cols { display:flex; gap:60px; flex-wrap:wrap; }
+    .footer-col h5 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,.9); margin-bottom:20px; }
+    .footer-col h5::after { content:''; display:block; width:24px; height:2px; background:var(--sky); margin-top:8px; }
+    .footer-col ul { list-style:none; }
+    .footer-col li { margin-bottom:12px; }
+    .footer-col a { font-size:14px; color:rgba(255,255,255,.45); transition:color .2s; }
+    .footer-col a:hover { color:var(--sky); }
+    .footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; border-top:1px solid rgba(255,255,255,.08); padding-top:28px; }
+    .footer-bottom p { font-size:13px; }
+    .footer-legal { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-legal a { font-size:13px; color:rgba(255,255,255,.35); transition:color .2s; }
+    .footer-legal a:hover { color:white; }
+
+    /* ── SCROLL ANIM ── */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
+    .fade-up.visible { opacity:1; transform:none; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .conditions-grid { grid-template-columns:1fr 1fr; }
+      .stories-grid { grid-template-columns:1fr 1fr; }
+      .stats-grid { grid-template-columns:1fr 1fr; gap:32px; }
+    }
+    @media(max-width:1024px){
+      .what-section { grid-template-columns:1fr; gap:40px; }
+      .cat-grid { grid-template-columns:1fr 1fr; }
+      .wide-card { grid-template-columns:1fr; }
+      .wc-img { min-height:220px; max-height:270px; }
+      .compare-grid { grid-template-columns:1fr; }
+      .steps-grid { grid-template-columns:1fr 1fr; }
+      .clinic-section { grid-template-columns:1fr; }
+      header, .breadcrumb, .cat-nav { padding-left:40px; padding-right:40px; }
+      .pad, .what-section, .category-section, .featured-section, .condition-section,
+      .compare-section, .stats-band, .process-section, .stories-section, .clinic-section, .form-section { padding:60px 40px; }
+      .intro-strip { padding:24px 40px; }
+      .hero-content { padding:0 40px 64px; }
+      footer { padding:60px 40px 32px; }
+    }
+    @media(max-width:768px){
+      header { padding:0 20px; }
+      nav.main-nav { display:none; }
+      .hamburger { display:flex; }
+      .hero-content { padding:0 20px 48px; }
+      .breadcrumb, .cat-nav { padding-left:20px; padding-right:20px; }
+      .pad, .what-section, .category-section, .featured-section, .condition-section,
+      .compare-section, .stats-band, .process-section, .stories-section, .clinic-section, .form-section { padding:48px 20px; }
+      .intro-strip { padding:24px 20px; flex-direction:column; }
+      .cat-grid { grid-template-columns:1fr; }
+      .conditions-grid { grid-template-columns:1fr; }
+      .steps-grid { grid-template-columns:1fr; }
+      .stories-grid { grid-template-columns:1fr; }
+      .form-grid { grid-template-columns:1fr; }
+      .stats-grid { grid-template-columns:1fr 1fr; }
+      footer { padding:48px 20px 24px; }
+      .footer-bottom { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="logo-wrap">
+    <img src="images/logo.png" alt="Med-Awa International" style="height:58px;width:auto;object-fit:contain;display:block;" />
+  </a>
+  <nav class="main-nav">
+    
+    <a href="prosthetics.html">Prosthetics</a>
+    <a href="orthotics.html" class="active">Orthotics</a>
+    <a href="equip.html">Equipment &amp; Wheelchairs</a>
+    
+    
+  </nav>
+  <div class="header-actions">
+    <a href="#consult" class="btn-cta">Contact Us</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+  <ol>
+    <li><a href="index.html">Home</a></li>
+    <li>Orthotics</li>
+  </ol>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-img"><img src="images\orthotics\upper limb\orth 2.avif" alt="Patient wearing a knee orthosis walking confidently outdoors" /></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-label">Med-Awa Solutions</div>
+    </div>
+    <h1><strong>Orthotics</strong></h1>
+    <p>Whether you are treating pain, recovering from surgery, managing a neurological condition, or simply need everyday support — Med-Awa International has orthotic solutions for every body part and every stage of life.</p>
+    <div class="hero-btns">
+      <a href="#categories" class="btn-sky">
+        Explore solutions
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+      <a href="#consult" class="btn-outline">
+        Contact Us
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── INTRO STRIP ── -->
+<div class="intro-strip">
+  <p>From bracing and support to fully custom orthoses, our portfolio covers the spine, knee, ankle, foot, wrist, elbow, and more — designed to improve functional outcomes so patients can resume daily activities with confidence.</p>
+  <a href="#categories">Browse all solutions →</a>
+</div>
+
+<!-- ── STICKY CATEGORY NAV ── -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <div class="cat-nav-item active" data-target="categories">All Categories</div>
+    <div class="cat-nav-item" data-target="featured">Featured Products</div>
+    <div class="cat-nav-item" data-target="conditions">By Condition</div>
+    <div class="cat-nav-item" data-target="process">Fitting Process</div>
+    <div class="cat-nav-item" data-target="stories">Patient Stories</div>
+  </div>
+</nav>
+
+<!-- ── WHAT IS ORTHOTICS ── -->
+<div id="overview" class="what-section fade-up">
+  <div class="what-text">
+    <div class="section-subtitle sub-sky">What are orthotics?</div>
+    <h2 class="section-title">Support that moves with you</h2>
+    <p>Orthotics — also called orthoses — are externally worn medical devices that support, align, or assist the function of a part of your body. They can help stabilise joints, correct posture, offload pressure, or assist with movement.</p>
+    <p>Orthotic devices are an essential tool for non-invasive treatment to manage injuries, chronic conditions, post-surgical recovery, and congenital differences. From a simple off-the-shelf knee sleeve to an advanced microprocessor-controlled leg brace, the range of orthotic solutions available today is extraordinary.</p>
+    <p>At Med-Awa International, our certified orthotists work closely with each patient and their care team to identify the right solution — one that fits perfectly, works effectively, and supports the goals that matter most to them.</p>
+  </div>
+  <div class="what-visual">
+    <img src="images\orthotics\upper limb\orth 5.avif" alt="Orthotist fitting a patient with a custom knee orthosis" />
+    <div class="what-badge">Custom-fitted. Patient-centred.</div>
+  </div>
+</div>
+
+<!-- ── CATEGORY GRID ── -->
+<section id="categories" class="category-section fade-up">
+  <div class="cat-header">
+    <div class="section-subtitle sub-sky">Product categories</div>
+    <h2 class="section-title">Orthotic solutions for every part of the body</h2>
+    <p class="section-lead">From the spine to the foot, our portfolio offers off-the-shelf bracing and fully custom-fabricated orthoses designed to improve outcomes for patients of all ages and activity levels.</p>
+  </div>
+  <div class="cat-grid">
+
+    <!-- Knee -->
+    <div class="cat-card cc-sky">
+      <div class="cat-card-img"><img src="images\orthotics\lower limb\agilium forte pic.avif" alt="Knee orthosis" /></div>
+      <div class="cat-card-body">
+        <div class="tag tag-sky">Lower Limb</div>
+        <h3>Knee Orthoses</h3>
+        <p>From soft supports for mild instability to rigid off-loading braces for osteoarthritis and post-surgical recovery — our knee orthoses reduce pain and restore confidence in every step.</p>
+        <a href="#consult" class="cat-link cl-sky">Learn more →</a>
+      </div>
+    </div>
+
+    <!-- Ankle & Foot -->
+    <div class="cat-card cc-green">
+      <div class="cat-card-img"><img src="images\orthotics\lower limb\GoOn.avif" alt="Ankle foot orthosis" /></div>
+      <div class="cat-card-body">
+        <div class="tag tag-green">Lower Limb</div>
+        <h3>Ankle &amp; Foot Orthoses (AFO)</h3>
+        <p>Our ankle-foot orthoses correct foot drop, support post-stroke gait, and manage conditions such as Charcot-Marie-Tooth disease. Custom and prefabricated options available.</p>
+        <a href="#consult" class="cat-link cl-green">Learn more →</a>
+      </div>
+    </div>
+
+    <!-- Spine -->
+    <div class="cat-card cc-sky">
+      <div class="cat-card-img"><img src="images\spine.jpg" alt="Spinal orthosis" /></div>
+      <div class="cat-card-body">
+        <div class="tag tag-sky">Spine</div>
+        <h3>Spinal Orthoses</h3>
+        <p>Our spinal orthoses reduce pain and improve mobility so patients can resume daily activities. Solutions span lumbar supports, TLSOs, and our patented Mechanical Advantage Pulley System for maximum stabilisation.</p>
+        <a href="#consult" class="cat-link cl-sky">Learn more →</a>
+      </div>
+    </div>
+
+    <!-- Upper Limb -->
+    <div class="cat-card cc-green">
+      <div class="cat-card-img"><img src="images\orthotics\upper limb\manu 2.avif" alt="Wrist and hand orthosis" /></div>
+      <div class="cat-card-body">
+        <div class="tag tag-green">Upper Limb</div>
+        <h3>Wrist, Hand &amp; Elbow Orthoses</h3>
+        <p>Functional wrist and hand orthoses support users with neurological impairments, post-surgical recovery, and conditions such as carpal tunnel syndrome and rheumatoid arthritis.</p>
+        <a href="#consult" class="cat-link cl-green">Learn more →</a>
+      </div>
+    </div>
+
+    <!-- Hip -->
+    <div class="cat-card cc-both">
+      <div class="cat-card-img"><img src="images\AM-SB-05-DUAL.jpg" alt="Hip orthosis" /></div>
+      <div class="cat-card-body">
+        <div class="tag tag-sky">Lower Limb</div>
+        <h3>Hip Orthoses</h3>
+        <p>Stabilise and support the hip joint during recovery from surgery, fracture, or dislocation. Our hip orthoses are lightweight, adjustable, and designed for patient compliance and comfort.</p>
+        <a href="#consult" class="cat-link cl-sky">Learn more →</a>
+      </div>
+    </div>
+
+    <!-- Neuro / C-Brace -->
+    <div class="cat-card cc-both">
+      <div class="cat-card-img"><img src="images\orthotics\upper limb\orth.avif" alt="C-Brace microprocessor orthosis" /></div>
+      <div class="cat-card-body">
+        <div class="tag tag-green">Advanced Technology</div>
+        <h3>Microprocessor-Controlled Orthoses</h3>
+        <p>The C-Brace is the world's first microprocessor-controlled stance- and swing-phase knee-ankle-foot orthosis — revolutionising mobility for users with lower limb weakness or neurological conditions.</p>
+        <a href="#featured" class="cat-link cl-green">Learn more →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FEATURED PRODUCTS ── -->
+<section id="featured" class="featured-section fade-up">
+  <div class="featured-header">
+    <div class="section-subtitle sub-sky">Featured products</div>
+    <h2 class="section-title">Our most advanced orthotic solutions</h2>
+    <p class="section-lead">From the world's first microprocessor knee-ankle-foot orthosis to proven spinal stabilisation systems, these devices set the standard for orthotic care.</p>
+  </div>
+
+  <!-- C-Brace -->
+  <div class="wide-card">
+    <div class="wc-img">
+      <img src="images/5046243-Genium-X4-169.jpg" alt="C-Brace KAFO" />
+      <div class="wc-badge bg-sky">World First · Microprocessor KAFO</div>
+    </div>
+    <div class="wc-body">
+      <div class="tag tag-sky">C-Brace · Microprocessor KAFO</div>
+      <h3>C-Brace — Redefining What's Possible</h3>
+      <p>The C-Brace is the world's first microprocessor-controlled stance- and swing-phase KAFO. Its real-time sensor technology detects the wearer's movement and adjusts the orthosis accordingly — enabling a seamless, natural walking experience on any terrain, even on uneven surfaces and slopes. Life-changing for users with incomplete spinal cord injuries, post-polio syndrome, and other lower limb impairments.</p>
+      <div class="wc-specs">
+        <div class="spec spec-sky">Real-time terrain sensing</div>
+        <div class="spec spec-sky">Stance &amp; swing control</div>
+        <div class="spec spec-sky">Water resistant</div>
+        <div class="spec spec-sky">App connectivity</div>
+      </div>
+      <a href="#consult" class="wc-btn wb-sky">Request details →</a>
+    </div>
+  </div>
+
+  <!-- Movao -->
+  <div class="wide-card green-hover">
+    <div class="wc-img">
+      <img src="images\orthotics\lower limb\GoOn.avif" alt="Movao AFO" />
+      <div class="wc-badge bg-green">Dynamic AFO</div>
+    </div>
+    <div class="wc-body">
+      <div class="tag tag-green">Movao · Dynamic Ankle Foot Orthosis</div>
+      <h3>Movao — Natural Gait with Every Step</h3>
+      <p>The Movao dynamic AFO provides active dorsiflexion assistance, helping users with foot drop achieve a smooth, natural gait pattern. Its lightweight carbon fibre construction and adjustable spring mechanism make it ideal for active daily use — for users with multiple sclerosis, stroke, or peroneal nerve injury.</p>
+      <div class="wc-specs">
+        <div class="spec spec-green">Active dorsiflexion assist</div>
+        <div class="spec spec-green">Carbon fibre lightweight</div>
+        <div class="spec spec-green">Adjustable spring tension</div>
+        <div class="spec spec-green">Low-profile design</div>
+      </div>
+      <a href="#consult" class="wc-btn wb-green">Request details →</a>
+    </div>
+  </div>
+
+  <!-- SoftEC Knee -->
+  <div class="wide-card">
+    <div class="wc-img">
+      <img src="images\orthotics\upper limb\orth 4.avif" alt="SoftEC knee orthosis" />
+      <div class="wc-badge bg-sky">Knee Orthosis · OA Relief</div>
+    </div>
+    <div class="wc-body">
+      <div class="tag tag-sky">Knee Orthosis · Osteoarthritis</div>
+      <h3>SoftEC Genu — Relief from Knee Pain</h3>
+      <p>The SoftEC Genu is an off-loading knee orthosis designed to provide effective relief from medial or lateral compartment osteoarthritis. Its biomechanical three-point correction principle reduces load on the affected compartment, easing pain and improving walking confidence without surgery.</p>
+      <div class="wc-specs">
+        <div class="spec spec-sky">Three-point OA correction</div>
+        <div class="spec spec-sky">Medial &amp; lateral variants</div>
+        <div class="spec spec-sky">Activity-grade certified</div>
+        <div class="spec spec-sky">Custom &amp; prefab</div>
+      </div>
+      <a href="#consult" class="wc-btn wb-sky">Request details →</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── CONDITION FINDER ── -->
+<div id="conditions" class="condition-section fade-up">
+  <div class="section-subtitle sub-sky">Find your solution</div>
+  <h2 class="section-title" style="color:white;">Orthotics by condition</h2>
+  <p class="section-lead">Our orthotists have experience treating a wide range of conditions. Select your condition to find the most appropriate orthotic solution for your needs.</p>
+  <div class="conditions-grid">
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Foot Drop</h4>
+      <p>Dynamic and static AFOs that lift the foot during the swing phase for safer, more natural walking after stroke or nerve injury.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Osteoarthritis</h4>
+      <p>Off-loading braces that reduce joint stress and relieve knee pain, helping patients delay or avoid surgical intervention.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Neurological Conditions</h4>
+      <p>Advanced orthoses for MS, incomplete SCI, post-polio, and cerebral palsy that support walking function and independence.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Post-Surgical Recovery</h4>
+      <p>Immobilising and functional orthoses to protect surgical repairs and support controlled rehabilitation after joint surgery.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Scoliosis</h4>
+      <p>Custom spinal bracing systems for idiopathic scoliosis in children and adolescents — designed for compliance and effectiveness.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Sports Injuries</h4>
+      <p>Functional bracing for ligament injuries, patellar instability, and ankle sprains — keeping athletes active during recovery.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Paediatric Conditions</h4>
+      <p>Lightweight, adjustable orthoses for children with clubfoot, flat feet, developmental delays, and other paediatric conditions.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+    <div class="cond-card">
+      <div class="cond-icon"></div>
+      <h4>Diabetic Foot</h4>
+      <p>Total contact casting and offloading orthoses to protect the diabetic foot, reduce ulceration risk, and support healing.</p>
+      <a href="#consult" class="cond-link">Find a solution →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── CUSTOM vs OFF-THE-SHELF ── -->
+<section class="compare-section fade-up">
+  <div>
+    <div class="section-subtitle sub-green">Which is right for you?</div>
+    <h2 class="section-title">Custom-made vs off-the-shelf orthoses</h2>
+    <p class="section-lead">Med-Awa offers both custom-fabricated and prefabricated orthotic solutions. Our orthotists will guide you to the right choice based on your diagnosis, goals, and lifestyle.</p>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-card sky-border">
+      <div class="compare-icon"></div>
+      <h3>Custom-Fabricated Orthoses</h3>
+      <p>Individually designed and built from a cast or 3D scan of your body. Ideal for complex conditions, unusual anatomy, or when a precise fit is essential for clinical outcomes.</p>
+      <ul class="compare-list">
+        <li><span class="check-sky">✓</span> Precise, personalised fit for your exact anatomy</li>
+        <li><span class="check-sky">✓</span> Optimal for complex or chronic conditions</li>
+        <li><span class="check-sky">✓</span> Materials and components selected for your lifestyle</li>
+        <li><span class="check-sky">✓</span> Built and adjusted by a certified orthotist</li>
+        <li><span class="check-sky">✓</span> Ongoing modifications as your condition changes</li>
+      </ul>
+    </div>
+    <div class="compare-card green-border">
+      <div class="compare-icon"></div>
+      <h3>Off-the-Shelf (Prefabricated)</h3>
+      <p>Ready-made orthoses available in standard sizes for common conditions. Suitable for mild to moderate conditions, acute injuries, and post-surgical support.</p>
+      <ul class="compare-list">
+        <li><span class="check-green">✓</span> Available immediately — no waiting time</li>
+        <li><span class="check-green">✓</span> Cost-effective for mild or short-term conditions</li>
+        <li><span class="check-green">✓</span> Simple to fit and adjust without a lab visit</li>
+        <li><span class="check-green">✓</span> Suitable for acute injuries and post-surgical use</li>
+        <li><span class="check-green">✓</span> Wide range of body parts and conditions covered</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-band fade-up">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">20<span class="stat-unit">+</span></div>
+      <div class="stat-label">Years of orthotic expertise</div>
+    </div>
+    <div>
+      <div class="stat-num">60<span class="stat-unit">k+</span></div>
+      <div class="stat-label">Orthoses fitted to date</div>
+    </div>
+    <div>
+      <div class="stat-num">340<span class="stat-unit">+</span></div>
+      <div class="stat-label">Regional care clinics</div>
+    </div>
+    <div>
+      <div class="stat-num">97<span class="stat-unit">%</span></div>
+      <div class="stat-label">Patient satisfaction</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROCESS ── -->
+<section id="process" class="process-section fade-up">
+  <div class="process-header">
+    <div class="section-subtitle sub-sky">How it works</div>
+    <h2 class="section-title">The orthotic fitting process</h2>
+    <p class="section-lead">Every orthosis is fitted to the individual. Our certified orthotists guide you through every step — from your first appointment to long-term follow-up care.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num sn-sky">1</div>
+      <h4>Referral &amp; Assessment</h4>
+      <p>Your doctor or specialist refers you to our orthotist, who conducts a thorough clinical assessment of your condition, functional goals, and lifestyle needs.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num sn-green">2</div>
+      <h4>Solution Design</h4>
+      <p>We identify the right orthotic solution for you — custom or prefabricated — and explain the options clearly so you can make an informed choice.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num sn-sky">3</div>
+      <h4>Fabrication &amp; Fitting</h4>
+      <p>Custom orthoses are cast or scanned and fabricated in our lab. All orthoses are carefully fitted, aligned, and adjusted for comfort and function.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num sn-green">4</div>
+      <h4>Training &amp; Follow-Up</h4>
+      <p>We ensure you know how to use and care for your orthosis and schedule follow-up appointments to monitor progress and make any necessary adjustments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PATIENT STORIES ── -->
+<section id="stories" class="stories-section fade-up">
+  <div class="stories-header">
+    <div class="section-subtitle sub-sky">Patient stories</div>
+    <h2 class="section-title">Moving forward with Med-Awa</h2>
+    <p class="section-lead">Real experiences from patients whose lives have been transformed by Med-Awa orthotic solutions.</p>
+  </div>
+  <div class="stories-grid">
+    <div class="story-card">
+      <div class="story-accent sa-sky"></div>
+      <div class="story-img-row">
+        <img src="images/4629077--169-col_4630853.jpg" class="story-avatar" alt="Nomsa D." />
+        <div>
+          <div class="story-name">Nomsa D.</div>
+          <div class="story-detail">C-Brace User · Harare</div>
+        </div>
+      </div>
+      <blockquote>"After my spinal cord injury I thought walking was behind me. The C-Brace from Med-Awa proved otherwise. I can now walk unaided in my home and around the neighbourhood. It has transformed my independence completely."</blockquote>
+    </div>
+    <div class="story-card">
+      <div class="story-accent sa-green"></div>
+      <div class="story-img-row">
+        <img src="images/5069629.jpg" class="story-avatar" alt="Robert M." />
+        <div>
+          <div class="story-name">Robert M.</div>
+          <div class="story-detail">SoftEC Knee User · Bulawayo</div>
+        </div>
+      </div>
+      <blockquote>"I was told I needed a knee replacement. My orthotist at Med-Awa fitted me with the SoftEC Genu knee brace and within weeks the pain reduced dramatically. I am back to walking my dogs every morning."</blockquote>
+    </div>
+    <div class="story-card">
+      <div class="story-accent sa-sky"></div>
+      <div class="story-img-row">
+        <img src="images/3332654-_MMP0093--169-col_3345964__en.jpg" class="story-avatar" alt="Charity T." />
+        <div>
+          <div class="story-name">Charity T.</div>
+          <div class="story-detail">Movao AFO User · Mutare</div>
+        </div>
+      </div>
+      <blockquote>"After my stroke I had severe foot drop and could barely walk safely. My Movao AFO from Med-Awa lifted my foot with every step — within three months I was walking to the shops again independently."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ── FIND CLINIC ── -->
+<div class="clinic-section fade-up">
+  <div class="clinic-box cb-sky">
+    <h3>Visit Our Clinic</h3>
+    <p>39 Honey Drive, Belvedere, Harare, Zimbabwe.<br>Walk in or call ahead — no referral needed for a free initial orthotic assessment with our certified orthotists.</p>
+    <a href="https://maps.google.com/?q=39+Honey+Drive+Belvedere+Harare" target="_blank" class="cb-btn cbb-sky">
+      Get directions
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+    </a>
+  </div>
+  <div class="clinic-box cb-green">
+    <h3>Contact Us</h3>
+    <p>📞 +263 86 4428 7874<br>📱 +263 77 613 3202 &nbsp;|&nbsp; +263 77 421 9190<br>✉️ medawainternational@gmail.com</p>
+    <a href="mailto:medawainternational@gmail.com" class="cb-btn cbb-green">
+      Send an email
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ── CONSULTATION FORM ── -->
+<section id="consult" class="form-section fade-up">
+  <div class="form-wrap">
+    <div class="section-subtitle sub-sky">Book a consultation</div>
+    <h2 class="section-title">Talk to a certified orthotist</h2>
+    <p class="section-lead">Complete the form below and a Med-Awa orthotist will contact you within 24 hours to discuss the best orthotic solution for your condition and lifestyle.<br><br><strong>📍 39 Honey Drive, Belvedere, Harare &nbsp;|&nbsp; 📞 +263 86 4428 7874 &nbsp;|&nbsp; ✉️ medawainternational@gmail.com</strong></p>
+    <form id="orthoForm" novalidate>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" placeholder="e.g. Nomsa" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" placeholder="e.g. Dube" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="+263 77 613 3202" required />
+        </div>
+        <div class="form-group">
+          <label for="city">City / Location</label>
+          <input type="text" id="city" placeholder="e.g. Harare, Zimbabwe" />
+        </div>
+        <div class="form-group">
+          <label for="orthotic">Area of Interest</label>
+          <select id="orthotic">
+            <option value="">— Select —</option>
+            <option>Knee orthosis</option>
+            <option>Ankle-foot orthosis (AFO)</option>
+            <option>Spinal orthosis</option>
+            <option>Wrist / Hand orthosis</option>
+            <option>Hip orthosis</option>
+            <option>C-Brace (microprocessor KAFO)</option>
+            <option>Paediatric orthotics</option>
+            <option>Not sure — need advice</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="condition">Condition / Diagnosis</label>
+          <select id="condition">
+            <option value="">— Select if known —</option>
+            <option>Foot drop (post-stroke)</option>
+            <option>Osteoarthritis</option>
+            <option>Incomplete spinal cord injury</option>
+            <option>Post-surgical recovery</option>
+            <option>Multiple sclerosis</option>
+            <option>Scoliosis</option>
+            <option>Sports injury / ligament</option>
+            <option>Diabetic foot</option>
+            <option>Paediatric / developmental</option>
+            <option>Other / Not sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ref">Referred by</label>
+          <select id="ref">
+            <option value="">— Select —</option>
+            <option>Doctor / GP</option>
+            <option>Physiotherapist</option>
+            <option>Surgeon</option>
+            <option>Self-referred</option>
+            <option>Family / Friend</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">Tell us about your situation</label>
+          <textarea id="message" placeholder="Describe your condition, symptoms, mobility goals, or any questions you have. The more context you share, the better we can prepare for your consultation."></textarea>
+        </div>
+        <div class="form-group full">
+          <div class="checkbox-row">
+            <input type="checkbox" id="consent" required />
+            <label for="consent">I agree to Med-Awa International contacting me regarding my enquiry. My information will be handled in accordance with the Privacy Policy. *</label>
+          </div>
+        </div>
+        <div class="form-group full">
+          <button type="submit" class="submit-btn">
+            Submit Request
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+          <p class="form-note">* Required fields. We typically respond within one business day.</p>
+        </div>
+      </div>
+      <div class="form-success" id="formSuccess">
+        ✓ Thank you! Your consultation request has been received. A Med-Awa orthotist will be in touch within 24 hours.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="images/logo.png" alt="Med-Awa International" style="height:56px;width:auto;object-fit:contain;display:block;" /></div>
+      <p class="footer-tagline">39 Honey Drive, Belvedere, Harare, Zimbabwe<br>📞 +263 86 4428 7874 &nbsp;|&nbsp; 📱 +263 77 613 3202<br>✉️ medawainternational@gmail.com</p>
+      <div class="footer-social">
+        <a href="#" class="social-icon" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Orthotics</h5>
+        <ul>
+          <li><a href="orthotics.html">Overview</a></li>
+          <li><a href="#categories">Knee Orthoses</a></li>
+          <li><a href="#categories">Ankle &amp; Foot (AFO)</a></li>
+          <li><a href="#categories">Spinal Orthoses</a></li>
+          <li><a href="#categories">Upper Limb</a></li>
+          <li><a href="#featured">C-Brace</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Med-Awa</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="prosthetics.html">Prosthetics</a></li>
+          <li><a href="prosthetic-legs.html">Prosthetic Legs</a></li>
+          <li><a href="#">Wheelchairs</a></li>
+          <li><a href="#">Care Centers</a></li>
+          <li><a href="#consult">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Med-Awa International. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Imprint</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Sticky nav highlight on scroll
+  const sections = ['categories','featured','conditions','process','stories'];
+  const navItems = document.querySelectorAll('.cat-nav-item');
+  const scrollObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navItems.forEach(n => n.classList.toggle('active', n.dataset.target === e.target.id));
+      }
+    });
+  }, { rootMargin:'-25% 0px -65% 0px' });
+  sections.forEach(id => { const el = document.getElementById(id); if(el) scrollObs.observe(el); });
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const t = document.getElementById(item.dataset.target);
+      if(t) t.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  // Form submit
+  document.getElementById('orthoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const consent = document.getElementById('consent').checked;
+    if(!fname || !email || !consent){
+      alert('Please fill in all required fields and accept the consent checkbox.');
+      return;
+    }
+    document.getElementById('formSuccess').style.display = 'block';
+    this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+    document.getElementById('formSuccess').scrollIntoView({ behavior:'smooth', block:'center' });
+  });
+</script>
+</body>
+</html>
